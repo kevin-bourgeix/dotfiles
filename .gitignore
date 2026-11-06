@@ -12,3 +12,5 @@ zed/prompts/
 zed/.tmp*
 .DS_Store
 *.bak
+!nvim/
+!nvim/**
