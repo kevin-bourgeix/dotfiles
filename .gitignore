@@ -1,0 +1,14 @@
+*
+!.gitignore
+!rex/
+!rex/**
+!zed/
+!zed/**
+!ponytail/
+!ponytail/**
+zed/embeddings/
+zed/conversations/
+zed/prompts/
+zed/.tmp*
+.DS_Store
+*.bak

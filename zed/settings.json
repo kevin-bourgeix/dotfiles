@@ -1,0 +1,115 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "language_models": {
+    "opencode": {
+      "show_zen_models": false
+    }
+  },
+  "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always",
+          },
+        },
+      },
+      "enable_lsp_tasks": true,
+    },
+  },
+  "cli_default_open_behavior": "existing_window",
+  "edit_predictions": {
+    "mode": "eager",
+    "open_ai_compatible_api": {
+      "model": "",
+    },
+    "provider": "zed",
+  },
+  "project_panel": {
+    "button": false,
+    "file_icons": true,
+    "folder_icons": true,
+    "git_status": true,
+    "git_status_indicator": true,
+    "dock": "right",
+  },
+  "outline_panel": {
+    "dock": "right",
+  },
+  "collaboration_panel": {
+    "dock": "right",
+  },
+  "git_panel": {
+    "dock": "right",
+  },
+  "icon_theme": "Catppuccin Latte",
+  "agent": {
+    "dock": "left",
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-haiku-4.5",
+    },
+    "default_model": {
+      "effort": "medium",
+      "enable_thinking": true,
+      "provider": "opencode",
+      "model": "go/deepseek-v4-flash",
+    },
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 200,
+    },
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Tokyo Night Storm",
+  },
+  "relative_line_numbers": "enabled",
+  "which_key": {
+    "enabled": true,
+    "delay_ms": 200,
+  },
+  "scrollbar": {
+    "show": "never",
+  },
+  "tab_bar": {
+    "show": true,
+    "show_nav_history_buttons": false,
+  },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  // Indentation, rainbow indentation
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware",
+  },
+  "colorize_brackets": true,
+  "toolbar": {
+    "quick_actions": false,
+  },
+}
