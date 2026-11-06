@@ -1,0 +1,21 @@
+PROMPT='%F{blue}%~%f %# '
+
+alias cat=bat
+alias ls='eza -al'
+
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history hist_ignore_dups
+
+autoload -Uz compinit && compinit
+
+[[ -r /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] \
+  && source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Ctrl-R fuzzy history, Ctrl-T files, Alt-C dirs
+source <(fzf --zsh)
+
+# keep last
+eval "$(zoxide init zsh)"
+alias cd=z

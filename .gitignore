@@ -14,3 +14,7 @@ zed/.tmp*
 *.bak
 !nvim/
 !nvim/**
+!zsh/
+!zsh/**
+!Brewfile
+!README.md

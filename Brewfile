@@ -1,0 +1,6 @@
+brew "zoxide"
+brew "bat"
+brew "eza"
+brew "fzf"
+brew "zsh-autosuggestions"
+brew "neovim"
