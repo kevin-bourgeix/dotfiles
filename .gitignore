@@ -18,3 +18,4 @@ zed/.tmp*
 !zsh/**
 !Brewfile
 !README.md
+!starship.toml
