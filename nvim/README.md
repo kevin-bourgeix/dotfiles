@@ -43,7 +43,7 @@ Use a [Nerd Font](https://www.nerdfonts.com/) in your terminal for icons.
 | Prefix | Area |
 |---|---|
 | `<leader>f` | find (telescope) |
-| `<leader>e` / `E` | file explorer / reveal file |
+| `<leader>e` / `E` | explorer sidebar / full-window explorer (reveals file) |
 | `s` / `S` | flash jump / treesitter select |
 | `<leader>l` | LSP (also native `gra grn grr gri grt K`) |
 | `<leader>c` | format, diagnostics |

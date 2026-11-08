@@ -84,7 +84,7 @@ m("n", "<leader>bo", "<cmd>%bdelete|edit #|bdelete #<cr>", "Delete other buffers
 m("n", "<leader>e", function()
   vim.cmd(vim.bo.filetype == "neo-tree" and "Neotree close" or "Neotree focus")
 end, "Explorer focus / close")
-m("n", "<leader>E", "<cmd>Neotree reveal<cr>", "Explorer reveal file")
+m("n", "<leader>E", "<cmd>Neotree reveal current<cr>", "Explorer full window (reveal file)")
 
 -- Find (telescope)
 local tb = function(fn, opts) return function() require("telescope.builtin")[fn](opts) end end
