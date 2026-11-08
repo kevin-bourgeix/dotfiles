@@ -14,6 +14,8 @@ cask "boring-notch"
 cask "monitorcontrol"
 cask "pika"
 cask "stats"
+cask "dockdoor"
+cask "loop"
 brew "mas"
 mas "RunCat", id: 1429033973
 

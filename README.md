@@ -21,6 +21,9 @@ Ponytail's mode is `ponytail/config.json`. Not tracked: plugins, skills (symlink
 
 Rex font is an app setting, not in the repo: pick "GeistMono Nerd Font" in Rex's terminal font picker.
 
+DockDoor: grant Accessibility + Screen Recording once in System Settings → Privacy & Security; its settings are app prefs, not in the repo.
+Loop: grant Accessibility once, same place; prefs also untracked.
+
 Tool installers (conda, nvm, bun, sdkman…) append their init blocks to `~/.zshrc`.
 That is the stub, not the repo, on purpose: machine-specific stuff stays out of git.
 
