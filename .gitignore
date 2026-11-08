@@ -6,6 +6,7 @@
 !zed/**
 !ponytail/
 !ponytail/**
+ponytail/band/
 zed/embeddings/
 zed/conversations/
 zed/prompts/
