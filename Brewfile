@@ -20,6 +20,7 @@ cask "pika"
 cask "stats"
 cask "dockdoor"
 cask "loop"
+cask "copyclip"
 brew "mas"
 mas "RunCat Neo", id: 6757801838
 
