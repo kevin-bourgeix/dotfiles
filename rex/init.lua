@@ -1,7 +1,7 @@
 -- (Re)start the persistence watcher whenever the server loads this config.
 -- A watcher from a previous server outlives it with a dead connection, so replace it every time.
 local home = os.getenv("HOME")
-local rex_bin = "/Users/kevinbourgeix/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
+local rex_bin = home .. "/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
 rex.exec({ "pkill", "-f", "persist[.]lua" })
 rex.exec({ "sh", "-c",
   "nohup sh -c 'until \"$0\" do --all \"$1\"; do sleep 2; done' \"" .. rex_bin .. "\" \"" .. home ..

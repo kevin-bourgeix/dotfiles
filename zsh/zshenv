@@ -12,6 +12,6 @@ export NVM_DIR="$HOME/.nvm"
 export PNPM_HOME="$HOME/Library/pnpm"
 path=(/opt/homebrew/bin /opt/homebrew/sbin /opt/homebrew/opt/rustup/bin $HOME/.cargo/bin $HOME/.local/bin $PNPM_HOME $path)
 # default nvm node on PATH without sourcing nvm.sh (nvm itself is lazy-loaded in zshrc)
-_nvm_node=($NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default 2>/dev/null)*(NOn[1]))
+[[ -r $NVM_DIR/alias/default ]] && _nvm_node=($NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)*(NOn[1]))
 [[ -d $_nvm_node ]] && path=($_nvm_node/bin $path)
 unset _nvm_node

@@ -2,7 +2,7 @@
 # Worktree picker for rex (ctrl+b t). Runs in the focused pane's cwd.
 # enter: open session | ctrl-d: remove worktree + session | "+ new": create from branch name
 export PATH="/opt/homebrew/bin:$PATH"  # layer runs with shell=none, so no login PATH
-REX="/Users/kevinbourgeix/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
+REX="$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
 ROOT="$HOME/Repos/worktrees"
 common=$(git rev-parse --path-format=absolute --git-common-dir 2>/dev/null) || { echo "not in a git repo"; read -rsn1; exit 1; }
 main=$(dirname "$common")

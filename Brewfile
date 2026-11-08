@@ -5,8 +5,12 @@ brew "fzf"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "tree-sitter-cli"
 brew "starship"
 cask "font-geist-mono-nerd-font"
+cask "zed"
 
 # Menu bar apps
 tap "theboredteam/boring-notch"
@@ -17,7 +21,7 @@ cask "stats"
 cask "dockdoor"
 cask "loop"
 brew "mas"
-mas "RunCat", id: 1429033973
+mas "RunCat Neo", id: 6757801838
 
 # Dev toolchains
 brew "git"      # brew git instead of Apple's; `brew bundle --upgrade` keeps it current
@@ -35,3 +39,4 @@ cask "mantrakp04/tap/ardia"
 cask "claude-code"
 brew "rtk"
 brew "jq"
+brew "gh"
