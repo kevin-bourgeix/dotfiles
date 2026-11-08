@@ -28,3 +28,8 @@ cask "logi-options+"
 # Browser
 tap "mantrakp04/tap"
 cask "mantrakp04/tap/ardia"
+
+# Claude Code
+cask "claude-code"
+brew "rtk"
+brew "jq"
