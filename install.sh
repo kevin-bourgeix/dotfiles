@@ -9,3 +9,5 @@ for f in claude/*; do
   [ -e "$t" ] && [ ! -L "$t" ] && mv "$t" "$t.bak"
   ln -sfn "$PWD/$f" "$t"
 done
+defaults write com.apple.finder AppleShowAllFiles -bool true
+killall Finder
