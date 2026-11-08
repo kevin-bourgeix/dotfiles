@@ -18,7 +18,6 @@ cask "boring-notch"
 cask "monitorcontrol"
 cask "pika"
 cask "stats"
-cask "dockdoor"
 cask "loop"
 brew "mas"
 mas "RunCat Neo", id: 6757801838
