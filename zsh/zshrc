@@ -18,6 +18,55 @@ autoload -Uz compinit && compinit
 # Ctrl-R fuzzy history, Ctrl-T files, Alt-C dirs
 source <(fzf --zsh)
 
+# lazy nvm: sourced on first `nvm` call (default node already on PATH via zshenv)
+nvm() { unset -f nvm; source "$NVM_DIR/nvm.sh"; nvm "$@"; }
+
+autoload -Uz edit-command-line zmv add-zsh-hook
+zle -N edit-command-line
+bindkey ' ' magic-space  # space expands !! / !$ inline
+
+# suffix aliases: type a filename alone -> opens in nvim
+alias -s {ts,tsx,js,jsx,mjs,json,jsonc,py,rs,go,lua,sh,zsh,toml,yaml,yml,md,txt,html,css,c,h,cpp,sql,env,conf}=nvim
+
+alias -g C='| pbcopy'  # `cmd C` copies output
+alias zcp='zmv -C' zln='zmv -L'  # zmv '(*).jpeg' '$1.jpg'
+
+# ^X is the leader for custom widgets; register new ones in _xkeys (^X? lists them)
+copy-buffer() { print -rn -- $BUFFER | pbcopy; zle -M copied }
+clear-keep()  { zle clear-screen; printf '\e[3J' }
+git-key() { local k; read -k1 k; case $k in
+  c) LBUFFER+='git commit -m "'; RBUFFER='"'$RBUFFER ;;
+  a) LBUFFER+='git add -A && git commit -m "'; RBUFFER='"'$RBUFFER ;; p) LBUFFER+='git push' ;;
+  s) LBUFFER+='git status' ;;      l) LBUFFER+='git log --oneline -20' ;; esac; }
+zle -N copy-buffer; zle -N clear-keep; zle -N git-key
+
+typeset -A _xkeys=(
+  e  "edit-command-line|edit buffer in nvim"
+  c  "copy-buffer|copy buffer to clipboard"
+  l  "clear-keep|clear screen+scrollback, keep buffer"
+  g  "git-key|git hotkeys: c commit, a add-all+commit, p push, s status, l log"
+)
+whichkey() {  # fzf popup of ^X bindings; Enter runs the widget
+  local pick k v
+  pick=$(for k v in ${(kv)_xkeys}; do print "^X$k  ${v#*|}"; done | sort | fzf --prompt='^X ' --height=~40%)
+  zle reset-prompt
+  [[ -n $pick ]] && zle ${_xkeys[${pick[3]}]%%|*}
+}
+zle -N whichkey
+for k v in ${(kv)_xkeys}; do bindkey "^X$k" ${v%%|*}; done
+bindkey '^X?' whichkey
+
+# on cd: ls, nvm use only when .nvmrc exists (keeps nvm lazy otherwise)
+auto_cd() { ls; [[ -f .nvmrc ]] && nvm use }
+add-zsh-hook chpwd auto_cd
+
 # keep last
 eval "$(zoxide init zsh)"
 alias cd=z
+
+# must be sourced last; underline aliases/functions (default is plain green)
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[alias]='fg=green,underline'
+ZSH_HIGHLIGHT_STYLES[function]='fg=green,underline'
+[[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+  && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
