@@ -24,9 +24,12 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh"
+  },
   "enabledPlugins": {
-    "ponytail@ponytail": true,
-    "superpowers@claude-plugins-official": true
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "ponytail": {
@@ -44,9 +47,5 @@
     }
   },
   "tui": "fullscreen",
-  "editorMode": "vim",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh"
-  }
+  "editorMode": "vim"
 }
