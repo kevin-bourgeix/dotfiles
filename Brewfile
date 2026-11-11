@@ -24,6 +24,7 @@ mas "RunCat Neo", id: 6757801838
 
 # Dev toolchains
 brew "git"      # brew git instead of Apple's; `brew bundle --upgrade` keeps it current
+brew "lazygit"
 brew "go"
 brew "rustup"   # keg-only; run `rustup default stable` once
 
