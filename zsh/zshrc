@@ -70,3 +70,5 @@ ZSH_HIGHLIGHT_STYLES[alias]='fg=green,underline'
 ZSH_HIGHLIGHT_STYLES[function]='fg=green,underline'
 [[ -r /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
   && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+export PATH="$PWD/node_modules/.bin:$PATH"
