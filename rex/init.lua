@@ -40,6 +40,19 @@ local keys = {
 for i = 1, 9 do keys[#keys + 1] = { tostring(i), "tab " .. i, "client.tab.goto", { index = i } } end
 
 
+-- Live cwd of a pane. The terminal "pwd" method is empty unless the shell emits OSC 7 (ours doesn't),
+-- so read the foreground process cwd from the OS; fall back to pwd (OSC 7 URL, percent-encoded), then $HOME.
+local function block_cwd(block_id)
+  local ok, res = pcall(rex.block.call, "com.superlogical.terminal", "process", { block_id = block_id })
+  local cwd = ok and res and res.foreground and res.foreground.cwd
+  if not cwd then
+    ok, res = pcall(rex.block.call, "com.superlogical.terminal", "pwd", { block_id = block_id })
+    cwd = ok and res and res.pwd and res.pwd:match("^file://[^/]*(/.*)$")
+    cwd = cwd and cwd:gsub("%%(%x%x)", function(h) return string.char(tonumber(h, 16)) end)
+  end
+  return cwd or home
+end
+
 local function wrap(name, label, action, args)
   rex.action{
     name = name, title = label,
@@ -56,10 +69,7 @@ for i, k in ipairs(keys) do
       run = function(ctx)
         close_hint()
         -- ask the focused pane (ctx.block_id) explicitly; the default target isn't reliably the focused one
-        local ok, res = pcall(rex.block.call, "com.superlogical.terminal", "pwd", { block_id = ctx.block_id })
-        -- pwd is an OSC 7 URL (file://host/path, percent-encoded), not a plain path
-        local cwd = ok and res and res.pwd and res.pwd:match("^file://[^/]*(/.*)$") or os.getenv("HOME")
-        cwd = cwd:gsub("%%(%x%x)", function(h) return string.char(tonumber(h, 16)) end)
+        local cwd = block_cwd(ctx.block_id)
         rex.session.new_layer{
           bounds = { 0.05, 0.05, 0.9, 0.9 }, focus = true,
           layout = rex.layout.block{
@@ -75,9 +85,7 @@ for i, k in ipairs(keys) do
       name = "leader_worktree", title = "worktrees",
       run = function(ctx)
         close_hint()
-        local ok, res = pcall(rex.block.call, "com.superlogical.terminal", "pwd", { block_id = ctx.block_id })
-        local cwd = ok and res and res.pwd and res.pwd:match("^file://[^/]*(/.*)$") or os.getenv("HOME")
-        cwd = cwd:gsub("%%(%x%x)", function(h) return string.char(tonumber(h, 16)) end)
+        local cwd = block_cwd(ctx.block_id)
         rex.session.new_layer{
           bounds = { 0.2, 0.15, 0.6, 0.7 }, focus = true,
           layout = rex.layout.block{
